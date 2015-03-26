@@ -8,9 +8,11 @@ app.set('view engine', 'jade');
 app.set('views', __dirname + '/views');
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({extended: false}));
-mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/meishi');
+// mongoose.connect('mongodb://localhost/meishi');
 
 app.get('/', indexController.index);
+app.get('/auth', indexController.linkedIn);
+app.get('/main', indexController.getMain);
 
 var port = process.env.PORT || 6403;
 var server = app.listen(port, function() {

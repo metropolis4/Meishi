@@ -1,0 +1,25 @@
+.linkedInlogin {
+    margin-top: 100px;
+}
+.linkedinbtn {
+    width: 430px;
+}
+.linkedInimg {
+    background-image: url("/images/Sign-In-Large---Default.png");
+    height: 80px;
+    width: 430px;
+    outline: none;
+}
+.linkedInimg:hover {
+    background-image: url("/images/Sign-In-Large---Hover.png");
+    cursor: pointer;
+}
+.linkedInimg:active {
+    background-image: url("/images/Sign-In-Large---Active.png");
+}
+a {
+    outline: none;
+}
+.by-line {
+    font-style: italic;
+}
