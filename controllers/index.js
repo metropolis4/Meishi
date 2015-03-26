@@ -1,13 +1,16 @@
-// var linkedin = require('../config/linkedInAPI.js');
+var request = require('request');
+var linkedin = require('../config/linkedInAPI.js');
+// process.env.key
 var indexController = {
 	index: function(req, res) {
 		res.render('index');
 	},
     linkedIn: function(req, res) {
-        res.redirect('https://www.linkedin.com/uas/oauth2/authorization?response_type=code&client_id=' + process.env.key + '&redirect_uri=https://shielded-everglades-7672.herokuapp.com/main&state=5150515051505150');
+        res.redirect('/');
     },
     getMain: function(req, res){
-        res.render('main');
+        console.log("FROM SERVER::", req.user);
+        res.render('main', { user: req.user});
     }
 };
 
