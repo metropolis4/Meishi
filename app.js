@@ -6,11 +6,12 @@ var express = require('express'),
     // flash = require('connect-flash'),
     // passport = require('passport'),
     // passportConfig = require('./config/passport'),
-    linkedAPI = require('./config/linkedInAPI.js'),
-    Linkedin = require('node-linkedin')(linkedAPI.key, linkedAPI.secretKey, linkedAPI.callback);
+    // linkedAPI = require('./config/linkedInAPI.js'),
+    callback = 'https://shielded-everglades-7672.herokuapp.com/main',
+    Linkedin = require('node-linkedin')(process.env.key, process.env.secretKey, callback);
     indexController = require('./controllers/index.js');
 
-var linkedin = Linkedin.init(linkedAPI.token);
+var linkedin = Linkedin.init(process.env.token);
 mongoose.connect('mongodb://localhost/meishi');
 
 var app = express();
