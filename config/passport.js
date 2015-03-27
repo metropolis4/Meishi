@@ -22,7 +22,6 @@ passport.use(new LinkedInStrategy({
     function(token, tokenSecret, profile, done){
         process.nextTick(function(){
             // associate linkedIn account with user record in DB here...
-            console.log("PROFILE::: ", profile)
             return done(null, profile);
         });
     }

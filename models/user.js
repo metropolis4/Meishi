@@ -10,7 +10,8 @@ var userSchema = mongoose.Schema({
     password: {
         type: String,
         required: true
-    }
+    },
+    linkedin: String
 });
 
 userSchema.pre('save', function(next){
