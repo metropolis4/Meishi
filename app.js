@@ -12,7 +12,7 @@ var express = require('express'),
     indexController = require('./controllers/index.js');
 
 var linkedin = Linkedin.init(process.env.token);
-mongoose.connect('mongodb://localhost/meishi');
+mongoose.connect(process.env.MONGOLAB_URI ||'mongodb://localhost/meishi');
 
 var app = express();
 app.set('view engine', 'jade');
