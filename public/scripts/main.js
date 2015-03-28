@@ -15,7 +15,9 @@ meishi.controller('mainController', ['$scope', 'User', function($scope, User){
     
     var user = User.model.query(function(user){
         _.map(user, function(val){
-            return val;
+            return _.map(val, function(innerVal){
+                return innerVal;
+            });
         });
     });
     console.log("FROM ANGULAR::: ", user);
