@@ -1,5 +1,6 @@
 var request = require('request'),
     User = require('../models/user'),
+    request = require('request'),
     callback = 'https://shielded-everglades-7672.herokuapp.com/oauth/linkedin/callback',
     Linkedin = require('node-linkedin')(process.env.key, process.env.secretKey, callback);
 
@@ -38,9 +39,12 @@ var indexController = {
         //     console.log("FROM SERVER??? ", $in);
         //     res.send($in);
         // });
-        User.find({}, function(err, results){
-            if(err) throw err;
-            res.send(results);
+        // User.find({}, function(err, results){
+        //     if(err) throw err;
+        //     res.send(results);
+        // });
+        request('https://api.linkedin.com/v1/people/~?format=json', function(err, response, body){
+            res.send(response);
         });
     }
 
