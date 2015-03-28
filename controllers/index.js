@@ -4,7 +4,7 @@ var request = require('request'),
     callback = 'https://shielded-everglades-7672.herokuapp.com/oauth/linkedin/callback',
     Linkedin = require('node-linkedin')(process.env.key, process.env.secretKey, callback);
 
-var linkedin = Linkedin.init(process.env.token);
+// var linkedin = Linkedin.init(process.env.token);
 //     linkedAPI = require('../config/linkedInAPI.js');
 // var Linkedin = require('node-linkedin')(linkedAPI.key, linkedAPI.secretKey, 'https://localhost:6403/oauth/linkedin/callback');
 // var linkedin = Linkedin.init(linkedAPI.token);
@@ -23,17 +23,14 @@ var indexController = {
         Linkedin.auth.getAccessToken(res, req.query.code, function(err, results){
             if(err) 
                 return console.error(err);
-            var user = new User({
-                username: "test",
-                password: "test",
-                linkedin: results
-            });
-            user.save();
-
             return res.redirect('/main');
         });
     },
     getProfile: function(req, res){
+            var linkedin = linkedin.init(req.query.access_token);
+            linkedin.people.me(function(err, $in){
+                res.send($in);
+            });
         // linkedin.people.me(function(err, $in){
         //     if(err) throw err;
         //     console.log("FROM SERVER??? ", $in);
@@ -43,9 +40,9 @@ var indexController = {
         //     if(err) throw err;
         //     res.send(results);
         // });
-        request('https://api.linkedin.com/v1/people/~?format=json', function(err, response, body){
-            res.send(response);
-        });
+        // request('https://api.linkedin.com/v1/people/~?format=json', function(err, response, body){
+        //     res.send(response);
+        // });
     }
 
 };
