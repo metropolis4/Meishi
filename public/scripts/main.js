@@ -15,6 +15,7 @@ meishi.controller('mainController', ['$scope', '$http' , 'User', function($scope
     
     var user = User.model.get({});
     user = user;
+    $scope.greeting = "Hello";
     $http.get('https://api.linkedin.com/v1/people/~?format=json')
             .success(function(data, status, headers, config){
                 $scope.user2 = data;
@@ -22,7 +23,7 @@ meishi.controller('mainController', ['$scope', '$http' , 'User', function($scope
             .error(function(data, status, headers, config){
                 $scope.user2 = status;
             });
-    console.log("FROM ANGULAR::: ", user, "TRY AGAIN??? ", User.items, "AND AGAIN??? ", user2);
+    console.log("FROM ANGULAR::: ", user, "TRY AGAIN??? ", User.items);
     $scope.userInfo = user;
 }]);
 })();
