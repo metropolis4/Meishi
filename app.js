@@ -4,8 +4,7 @@ var express = require('express'),
     session = require('express-session'),
     indexController = require('./controllers/index.js');
 
-mongoose.connect(process.env.MONGOLAB_URI ||'mongodb://localhost/meishi');
-// mongoose.connect('mongodb://localhost/meishi');
+mongoose.connect('mongodb://localhost/meishi');
 
 var app = express();
 app.set('view engine', 'jade');
@@ -23,7 +22,7 @@ app.get('/', indexController.index);
 app.get('/oauth/linkedin', indexController.linkedInReq);
 app.get('/oauth/linkedin/callback', indexController.linkedInCallback);
 app.get('/main', indexController.getMain);
-app.get('/getProfile/:token', indexController.getProfile);
+app.get('/getProfile/:access_token', indexController.getProfile);
 
 var port = process.env.PORT || 6403;
 var server = app.listen(port, function() {
