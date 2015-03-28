@@ -13,6 +13,6 @@ meishi.factory('User', function($resource){
 });
 meishi.controller('mainController', ['$scope', 'User', function($scope, User){
     console.log("FROM ANGULAR::: ", User.items);
-    $scope.userInfo = User.items;
+    $scope.userInfo = User.items.linkedin;
 }]);
 })();
