@@ -1,6 +1,6 @@
 var express = require('express'),
     bodyParser = require('body-parser'),
-    // mongoose = require('mongoose'),
+    mongoose = require('mongoose'),
     session = require('express-session'),
     // linkedAPI = require('./config/linkedInAPI.js'),
     // callback = 'https://shielded-everglades-7672.herokuapp.com/oauth/linkedin/callback',
@@ -8,7 +8,7 @@ var express = require('express'),
     indexController = require('./controllers/index.js');
 
 // var linkedin = Linkedin.init(process.env.token);
-// mongoose.connect(process.env.MONGOLAB_URI ||'mongodb://localhost/meishi');
+mongoose.connect(process.env.MONGOLAB_URI ||'mongodb://localhost/meishi');
 
 var app = express();
 app.set('view engine', 'jade');
