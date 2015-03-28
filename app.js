@@ -34,7 +34,7 @@ app.get('/', indexController.index);
 app.get('/oauth/linkedin', function(req, res){
     Linkedin.auth.authorize(res, ['r_basicprofile']);
 });
-app.get('/oauth/linkedin/callback', function(req, res){
+app.get('/main', function(req, res){
     Linkedin.auth.getAccessToken(res, req,query.code, function(err, results){
         if(err) 
             return console.error(err);
