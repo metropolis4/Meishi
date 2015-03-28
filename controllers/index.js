@@ -25,23 +25,23 @@ var indexController = {
             var user = new User({
                 username: "test",
                 password: "test",
-                linkedin: results.access_token
+                linkedin: results
             });
             user.save();
-            
+
             return res.redirect('/main');
         });
     },
     getProfile: function(req, res){
-        linkedin.people.me(function(err, $in){
-            if(err) throw err;
-            console.log("FROM SERVER??? ", $in);
-            res.send($in);
-        });
-        // User.findById(req._id, function(err, results){
+        // linkedin.people.me(function(err, $in){
         //     if(err) throw err;
-        //     res.send(results);
+        //     console.log("FROM SERVER??? ", $in);
+        //     res.send($in);
         // });
+        User.find({}, function(err, results){
+            if(err) throw err;
+            res.send(results);
+        });
     }
 
 };
