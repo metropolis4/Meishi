@@ -22,21 +22,26 @@ var indexController = {
         Linkedin.auth.getAccessToken(res, req.query.code, function(err, results){
             if(err) 
                 return console.error(err);
-            console.log("RESULTS??", results);
-            var user = new User({
-                username: "test",
-                password: "test",
-                linkedin: results
-            });
-            user.save();
+            // var user = new User({
+            //     username: "test",
+            //     password: "test",
+            //     linkedin: results.access_token
+            // });
+            // user.save();
+
             return res.redirect('/main');
         });
     },
     getProfile: function(req, res){
-        User.findOne({_id: req._id}, function(err, results){
+        linkedin.people.me(function(err, $in){
             if(err) throw err;
-            res.send(results);
+            console.log("FROM SERVER??? ", $in);
+            res.send($in);
         });
+        // User.findById(req._id, function(err, results){
+        //     if(err) throw err;
+        //     res.send(results);
+        // });
     }
 
 };
