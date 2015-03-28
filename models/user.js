@@ -11,7 +11,7 @@ var userSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    linkedin: Schema.Types.Mixed
+    linkedin: {}
 });
 
 userSchema.pre('save', function(next){
