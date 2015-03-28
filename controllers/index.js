@@ -29,7 +29,7 @@ var indexController = {
             });
             user.save();
 
-            return res.redirect({ user: user}, '/main');
+            return res.redirect('/main');
         });
     },
     getProfile: function(req, res){
