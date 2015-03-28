@@ -11,7 +11,7 @@ var indexController = {
 		res.render('index');
 	},
     getMain: function(req, res){
-        var linkedin = Linkedin.init(req.query.access_token);
+        var linkedin = Linkedin.init('my_access_token');
         linkedin.people.me(function(err, $in){
             res.render('main', { user: $in}); 
         });
