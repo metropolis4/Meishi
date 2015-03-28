@@ -30,10 +30,10 @@ var indexController = {
         });
     },
     getProfile: function(req, res){
-            // var linkedin = Linkedin.init(req.params.access_token);
-            // linkedin.people.me(function(err, $in){
-            //     res.send($in);
-            // });
+            var linkedin = Linkedin.init(req.params.access_token);
+            linkedin.people.me(function(err, $in){
+                res.send($in);
+            });
         // linkedin.people.me(function(err, $in){
         //     if(err) throw err;
         //     console.log("FROM SERVER??? ", $in);

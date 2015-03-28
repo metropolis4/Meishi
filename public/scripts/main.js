@@ -15,13 +15,12 @@ meishi.controller('mainController', ['$scope', '$http' , 'User', function($scope
     
     var user = User.model.get({});
     user = user;
-    var user2;
     $http.get('https://api.linkedin.com/v1/people/~?format=json')
             .success(function(data, status, headers, config){
-                var user2 = data;
+                $scope.user2 = data;
             })
             .error(function(data, status, headers, config){
-                var user2 = status;
+                $scope.user2 = status;
             });
     console.log("FROM ANGULAR::: ", user, "TRY AGAIN??? ", User.items, "AND AGAIN??? ", user2);
     $scope.userInfo = user;
