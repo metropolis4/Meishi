@@ -7,7 +7,7 @@ var express = require('express'),
     // passport = require('passport'),
     // passportConfig = require('./config/passport'),
     // linkedAPI = require('./config/linkedInAPI.js'),
-    callback = 'https://shielded-everglades-7672.herokuapp.com/main',
+    callback = 'https://shielded-everglades-7672.herokuapp.com/oauth/linkedin/callback',
     Linkedin = require('node-linkedin')(process.env.key, process.env.secretKey, callback);
     indexController = require('./controllers/index.js');
 
@@ -34,12 +34,12 @@ app.get('/', indexController.index);
 app.get('/oauth/linkedin', function(req, res){
     Linkedin.auth.authorize(res, ['r_basicprofile']);
 });
-app.get('/main', function(req, res){
+app.get('/oauth/linkedin/callback', function(req, res){
     Linkedin.auth.getAccessToken(res, req.query.code, function(err, results){
         if(err) 
             return console.error(err);
         console.log("RESULTS??", results);
-        return res.redirect('/main');
+        return res.redirect('main');
     });
 });
 // app.get('/auth', passport.authenticate('linkedin'), function(req, res){});
