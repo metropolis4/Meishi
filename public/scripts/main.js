@@ -14,6 +14,7 @@ meishi.factory('User', function($resource){
 meishi.controller('mainController', ['$scope', 'User', function($scope, User){
     
     var user = User.items;
+    user = user[0];
     console.log("FROM ANGULAR::: ", user);
     $scope.userInfo = user;
 }]);
