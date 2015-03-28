@@ -11,9 +11,9 @@ var indexController = {
     // linkedIn: function(req, res) {
     //     res.redirect('/');
     // },
-    // getMain: function(req, res){
-    //     res.render('main', { user: req.user});
-    // },
+    getMain: function(req, res){
+        res.render('main', { user: req.user});
+    }
     // oauth: function(req, res){
     //     Linkedin.auth.authorize(res, ['r_basicprofile']);
     // },

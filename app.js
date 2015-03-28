@@ -39,9 +39,10 @@ app.get('/oauth/linkedin/callback', function(req, res){
         if(err) 
             return console.error(err);
         console.log("RESULTS??", results);
-        return res.redirect('main');
+        return res.redirect('/main');
     });
 });
+app.get('/main', indexController.getMain);
 // app.get('/auth', passport.authenticate('linkedin'), function(req, res){});
 // app.get('/auth/callback', passport.authenticate('linkedin', {failureRedirect: '/'}),
 //     indexController.authCallback);
