@@ -22,13 +22,13 @@ var indexController = {
         Linkedin.auth.getAccessToken(res, req.query.code, function(err, results){
             if(err) 
                 return console.error(err);
-            // var user = new User({
-            //     username: "test",
-            //     password: "test",
-            //     linkedin: results.access_token
-            // });
-            // user.save();
-
+            var user = new User({
+                username: "test",
+                password: "test",
+                linkedin: results.access_token
+            });
+            user.save();
+            
             return res.redirect('/main');
         });
     },
