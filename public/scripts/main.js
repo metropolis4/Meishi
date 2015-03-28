@@ -12,6 +12,6 @@ meishi.factory('User', function($resource){
     };
 });
 meishi.controller('mainController', ['$scope', 'User', function($scope, User){
-    console.log("FROM ANGULAR::: ", User.model, "TRY AGAIN??? ", User.model());
+    console.log("FROM ANGULAR::: ", User.model.get({}));
 }]);
 })();
