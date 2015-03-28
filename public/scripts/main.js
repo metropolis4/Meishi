@@ -12,11 +12,10 @@ meishi.factory('User', function($resource){
     };
 });
 meishi.controller('mainController', ['$scope', 'User', function($scope, User){
-    console.log("FROM ANGULAR::: ", User.model.query(function(user){
-        _.map(user, function(val){
-            return val.linkedin;
-        });
-    }));
+    
+    var user = User.items;
+    user = user[0].linkedin;
+    console.log("FROM ANGULAR::: ", user);
     $scope.userInfo = User.items;
 }]);
 })();
