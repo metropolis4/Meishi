@@ -4,7 +4,7 @@ var express = require('express'),
     session = require('express-session'),
     indexController = require('./controllers/index.js');
 
-mongoose.connect('mongodb://localhost/meishi');
+mongoose.connect(process.env.MONGOLAB_URI ||'mongodb://localhost/meishi');
 
 var app = express();
 app.set('view engine', 'jade');

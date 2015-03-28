@@ -1,11 +1,10 @@
 var request = require('request'),
     User = require('../models/user'),
-    // callback = 'https://shielded-everglades-7672.herokuapp.com/oauth/linkedin/callback',
-    // Linkedin = require('node-linkedin')(process.env.key, process.env.secretKey, callback);
+    callback = 'https://shielded-everglades-7672.herokuapp.com/oauth/linkedin/callback',
+    Linkedin = require('node-linkedin')(process.env.key, process.env.secretKey, callback);
 
-    linkedAPI = require('../config/linkedInAPI.js');
-var Linkedin = require('node-linkedin')(linkedAPI.key, linkedAPI.secretKey, 'https://localhost:6403/oauth/linkedin/callback');
-var linkedin = Linkedin.init(linkedAPI.token);
+//     linkedAPI = require('../config/linkedInAPI.js');
+// var Linkedin = require('node-linkedin')(linkedAPI.key, linkedAPI.secretKey, 'https://localhost:6403/oauth/linkedin/callback');
 
 var indexController = {
 	index: function(req, res) {
