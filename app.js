@@ -35,11 +35,11 @@ app.get('/oauth/linkedin', function(req, res){
     Linkedin.auth.authorize(res, ['r_basicprofile']);
 });
 app.get('/main', function(req, res){
-    Linkedin.auth.getAccessToken(res, req,query.code, function(err, results){
+    Linkedin.auth.getAccessToken(res, req.query.code, function(err, results){
         if(err) 
             return console.error(err);
         console.log("RESULTS??", results);
-        return res.redirect('/');
+        return res.redirect('/main');
     });
 });
 // app.get('/auth', passport.authenticate('linkedin'), function(req, res){});
