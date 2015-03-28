@@ -25,6 +25,7 @@ var indexController = {
             var user = new User({
                 linkedin: results
             });
+            user.save();
             res.redirect('/main');
         });
     },
