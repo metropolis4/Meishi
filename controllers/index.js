@@ -2,6 +2,7 @@ var request = require('request'),
     User = require('../models/user'),
     callback = 'https://shielded-everglades-7672.herokuapp.com/oauth/linkedin/callback',
     Linkedin = require('node-linkedin')(process.env.key, process.env.secretKey, callback);
+
 var linkedin = Linkedin.init(process.env.token);
 // var linkedAPI = require('../config/linkedInAPI.js');
 // var Linkedin = require('node-linkedin')(linkedAPI.key, linkedAPI.secretKey, 'https://shielded-everglades-7672.herokuapp.com/main');
@@ -31,6 +32,12 @@ var indexController = {
             return res.redirect('/main');
         });
     },
+    getProfile: function(req, res){
+        User.findOne({_id: req._id}, function(err, results){
+            if(err) throw err;
+            res.send(results);
+        });
+    }
 
 };
 
