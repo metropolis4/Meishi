@@ -26,7 +26,7 @@ var indexController = {
                 linkedin: results.access_token
             });
             user.save();
-            req.session.linked_access_token = accessToken;
+            req.session.linked_access_token = user.linkedin;
             res.redirect('/main');
         });
     },
