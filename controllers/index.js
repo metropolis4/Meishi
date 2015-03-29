@@ -23,7 +23,7 @@ var indexController = {
         Linkedin.auth.getAccessToken(res, req.query.code, function(err, results){
             if(err) throw err;
             var user = new User({
-                linkedin: results.access_token
+                linkedin: results
             });
             user.save();
             req.session.linked_access_token = user.linkedin;
