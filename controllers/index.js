@@ -26,11 +26,12 @@ var indexController = {
                 linkedin: results.access_token
             });
             user.save();
+            req.session.linked_access_token = accessToken;
             res.redirect('/main');
         });
     },
     getProfile: function(req, res){
-            var linkedin = Linkedin.init(req.params.access_token);
+            var linkedin = Linkedin.init(req.session.linked_access_token);
             linkedin.people.me(function(err, $in){
                 res.send($in);
             });
