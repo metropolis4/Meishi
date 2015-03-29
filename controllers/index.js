@@ -23,7 +23,7 @@ var indexController = {
         Linkedin.auth.getAccessToken(res, req.query.code, function(err, results){
             if(err) throw err;
             var user = new User({
-                linkedin: results
+                linkedin: results.access_token
             });
             user.save();
             res.redirect('/main');
@@ -34,15 +34,6 @@ var indexController = {
             linkedin.people.me(function(err, $in){
                 res.send($in);
             });
-        // linkedin.people.me(function(err, $in){
-        //     if(err) throw err;
-        //     console.log("FROM SERVER??? ", $in);
-        //     res.send($in);
-        // });
-        // User.find({}, function(err, results){
-        //     if(err) throw err;
-        //     res.send(results);
-        // });
     }
 
 };
