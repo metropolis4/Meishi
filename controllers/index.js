@@ -11,10 +11,7 @@ var indexController = {
 		res.render('index');
 	},
     getMain: function(req, res){
-        var linkedin = Linkedin.init(theToken);
-        linkedin.people.me(function(err, $in){
-            res.render('main', { user: $in}); 
-        });
+        res.render('main'); 
     },
     linkedInReq: function(req, res){
         Linkedin.auth.authorize(res, ['r_basicprofile']);
@@ -31,10 +28,13 @@ var indexController = {
         });
     },
     getProfile: function(req, res){
-            var linkedin = Linkedin.init(theToken);
-            linkedin.people.me(function(err, $in){
-                res.send($in);
+            User.findById(req.params.id, function(err, results){
+                res.send(results);
             });
+            // var linkedin = Linkedin.init(theToken);
+            // linkedin.people.me(function(err, $in){
+            //     res.send($in);
+            // });
     }
 
 };
