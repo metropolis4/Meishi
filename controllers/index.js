@@ -5,13 +5,13 @@ var request = require('request'),
 
 //     linkedAPI = require('../config/linkedInAPI.js');
 // var Linkedin = require('node-linkedin')(linkedAPI.key, linkedAPI.secretKey, 'https://localhost:6403/oauth/linkedin/callback');
-
+var theToken;
 var indexController = {
 	index: function(req, res) {
 		res.render('index');
 	},
     getMain: function(req, res){
-        var linkedin = Linkedin.init('my_access_token');
+        var linkedin = Linkedin.init(theToken);
         linkedin.people.me(function(err, $in){
             res.render('main', { user: $in}); 
         });
@@ -26,12 +26,12 @@ var indexController = {
                 linkedin: JSON.parse(results)
             });
             user.save();
-            req.session.linked_access_token = user.linkedin;
+            theToken = user.linkedin;
             res.redirect('/main');
         });
     },
     getProfile: function(req, res){
-            var linkedin = Linkedin.init(req.body.linkedin.access_token);
+            var linkedin = Linkedin.init(theToken);
             linkedin.people.me(function(err, $in){
                 res.send($in);
             });

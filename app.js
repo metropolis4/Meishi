@@ -23,7 +23,7 @@ app.get('/', indexController.index);
 app.get('/oauth/linkedin', indexController.linkedInReq);
 app.get('/oauth/linkedin/callback', indexController.linkedInCallback);
 app.get('/main', indexController.getMain);
-app.get('/getProfile/:access_token', indexController.getProfile);
+app.get('/getProfile/:id', indexController.getProfile);
 
 var port = process.env.PORT || 6403;
 var server = app.listen(port, function() {
