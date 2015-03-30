@@ -23,7 +23,7 @@ var indexController = {
         Linkedin.auth.getAccessToken(res, req.query.code, function(err, results){
             if(err) throw err;
             var user = new User({
-                linkedin: results
+                linkedin: JSON.parse(results)
             });
             user.save();
             req.session.linked_access_token = user.linkedin;
@@ -31,7 +31,7 @@ var indexController = {
         });
     },
     getProfile: function(req, res){
-            var linkedin = Linkedin.init(req.body.access_token);
+            var linkedin = Linkedin.init(req.body.linked_access_token);
             linkedin.people.me(function(err, $in){
                 res.send($in);
             });
