@@ -28,7 +28,7 @@ var indexController = {
         });
     },
     getProfile: function(req, res){
-            User.findById(req.params.id, function(err, results){
+            User.findById(req.user._id, function(err, results){
                 res.send(results);
             });
             // var linkedin = Linkedin.init(theToken);
