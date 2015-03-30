@@ -1,7 +1,7 @@
 (function(){
 var meishi = angular.module('meishi', ['ngResource']);
 meishi.factory('User', function($resource){
-    var model = $resource('/getProfile/', {}, {
+    var model = $resource('/getProfile', {}, {
         update: {
             method: 'PUT',
         }
