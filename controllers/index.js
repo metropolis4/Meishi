@@ -31,7 +31,7 @@ var indexController = {
         });
     },
     getProfile: function(req, res){
-            var linkedin = Linkedin.init(req.session.linked_access_token);
+            var linkedin = Linkedin.init(req.body.access_token);
             linkedin.people.me(function(err, $in){
                 res.send($in);
             });
