@@ -1,7 +1,7 @@
 (function(){
 var meishi = angular.module('meishi', ['ngResource']);
 meishi.factory('User', function($resource){
-    var model = $resource('/getProfile/:id', {id: '@id'}, {
+    var model = $resource('/getProfile/:id', {id: '@_id'}, {
         update: {
             method: 'PUT',
         }
@@ -23,7 +23,7 @@ meishi.controller('mainController', ['$scope', '$http' , 'User', function($scope
     //         .error(function(data, status, headers, config){
     //             $scope.user2 = status;
     //         });
-    console.log("FROM ANGULAR::: ", user, "TRY AGAIN??? ", User.model.get({}));
+    console.log("FROM ANGULAR::: ", user, "TRY AGAIN??? ", User.model.get({id: '@_id'}));
     $scope.userInfo = user;
 }]);
 })();

@@ -23,18 +23,16 @@ var indexController = {
                 linkedin: JSON.parse(results)
             });
             user.save();
-            theToken = user.linkedin;
-            res.redirect('/main');
+            res.render('main', {
+                user: user
+            });
         });
     },
     getProfile: function(req, res){
-            User.findById(req.user._id, function(err, results){
-                res.send(results);
+            var linkedin = Linkedin.init(theToken);
+            linkedin.people.me(function(err, $in){
+                res.send($in);
             });
-            // var linkedin = Linkedin.init(theToken);
-            // linkedin.people.me(function(err, $in){
-            //     res.send($in);
-            // });
     }
 
 };
