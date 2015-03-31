@@ -28,7 +28,7 @@ var indexController = {
         });
     },
     getProfile: function(req, res){
-            var user = User.findById(req.body._id, function(err, results){
+            var user = User.findById(req.params._id, function(err, results){
                 var linkedin = Linkedin.init(results.linkedin.access_token);
                 linkedin.people.me(function(err, $in){
                     res.send($in);
